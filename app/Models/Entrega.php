@@ -10,5 +10,5 @@ class Entrega extends Model
     use HasFactory;
     protected $table = 'barrios';
     protected $primaryKey = 'id';
-    protected $fillable =[];
+    protected $fillable =['ano','entrega','nombre_completo','ci','estado','beneficiario_id','barrio_id'];
 }
