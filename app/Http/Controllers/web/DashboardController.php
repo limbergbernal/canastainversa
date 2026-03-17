@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index(){
         $beneficiarios = Beneficiario::where('estado', 'BAJA')
                 ->whereHas('entregas', function ($query) {
-                    $query->where('entrega', '6TA ENTREGA 2024')
+                    $query->where('entrega', '7MA ENTREGA 2024')
                         ->where('estado', 'NO ENTREGADO');
                 })
                 ->get();
