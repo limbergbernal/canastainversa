@@ -11,4 +11,8 @@ class Distrito extends Model
     protected $table = 'distritos';
     protected $primaryKey = 'id';
     protected $fillable =['distrito','numero','estado'];
+
+    public function barrios(){
+        return $this->hasMany(Barrio::class, 'distrito_id', 'id');
+    }
 }
