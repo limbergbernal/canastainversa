@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\web\BarrioController;
 use App\Http\Controllers\web\DashboardController;
+use App\Http\Controllers\web\ReporteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/barrios',[BarrioController::class, 'index'])->name('dashboard.barrios');
+Route::get('dashboard/reportes',[ReporteController::class, 'index'])->name('dashboard.reportes');

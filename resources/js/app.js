@@ -14,7 +14,18 @@ document.querySelectorAll('[data-vue]').forEach(async (el) => {
     if (components[path]) {
 
         const module = await components[path]()
-        const app = createApp(module.default)
+        let props = {};
+
+        Object.keys(el.dataset).forEach(key => {
+            if (key === 'vue') return
+
+            try{
+                props[key] = JSON.parse(el.dataset[key])
+            }catch(e){
+                props[key] = el.dataset[key]
+            }
+        })
+        const app = createApp(module.default, props)
 
         app.mount(el)
 
