@@ -9,7 +9,7 @@
                             <h4 class="card-title"><span class="lstick"></span>Reportes por Barrio</h4>
                         </div>
                     </div>
-                    <div data-vue="TableComponent" data-items='@json($entrega)' data-barrios='@json($barrios)'></div>
+                    <div data-vue="TableComponent" data-barrios='@json($barrios)'></div>
                 </div>
             </div>
         </div>

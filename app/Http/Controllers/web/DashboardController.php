@@ -9,9 +9,9 @@ use App\Models\Beneficiario;
 class DashboardController extends Controller
 {
     public function index(){
-        $beneficiarios = Beneficiario::where('estado', 'BAJA')
+        $beneficiarios = Beneficiario::where('estado', 'FALLECIDO')
                 ->whereHas('entregas', function ($query) {
-                    $query->where('entrega', '7MA ENTREGA 2024')
+                    $query->where('entrega', '5TA ENTREGA 2024')
                         ->where('estado', 'NO ENTREGADO');
                 })
                 ->get();
