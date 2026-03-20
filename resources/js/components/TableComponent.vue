@@ -35,25 +35,16 @@
         <tr v-for="beneficiario in items" :key="beneficiario.id" class="text-center">
           <td>{{ beneficiario.nombre_completo }}</td>
           <td>{{ beneficiario.ci }}</td>
-            <td>{{ checkEntrega(beneficiario,'1RA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'1RA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'2DA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'2DA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'3RA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'4TA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'4TA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'5TA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'6TA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'6TA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'7MA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ checkEntrega(beneficiario,'7MA ENTREGA 2024', 1) ? '1' : '0'}}</td>
-            <td>{{ getContador() }}</td>
+          <td v-for="mes in meses" :key="mes.label">
+            {{ tieneEntrega(beneficiario, mes.entrega) ? '1' : '0' }}
+        </td>
+            <td>{{ getSubTotal(beneficiario)}}</td>
         </tr>
         <tr>
             <td colspan="14" class="text-right">
                 <strong>Total</strong>
             </td>
-            <td>{{ resultado() }}</td>
+            <td>{{ totalGeneral }}</td>
         </tr>
       </tbody>
     </table>
@@ -71,7 +62,27 @@ export default {
         return {
             items: [],
             contador: 0,
-            sumaTotal:0
+            sumaTotal:0,
+            meses: [
+                { label: 'Ene', entrega: '1RA ENTREGA 2024'},
+                { label: 'Feb', entrega: '1RA ENTREGA 2024'},
+
+                { label: 'Mar', entrega: '2DA ENTREGA 2024'},
+                { label: 'Abr', entrega: '2DA ENTREGA 2024'},
+
+                { label: 'May', entrega: '3RA ENTREGA 2024'},
+
+                { label: 'Jun', entrega: '4TA ENTREGA 2024'},
+                { label: 'Jul', entrega: '4TA ENTREGA 2024'},
+
+                { label: 'Ago', entrega: '5TA ENTREGA 2024'},
+
+                { label: 'Sep', entrega: '6TA ENTREGA 2024'},
+                { label: 'Oct', entrega: '6TA ENTREGA 2024'},
+
+                { label: 'Nov', entrega: '7MA ENTREGA 2024'},
+                { label: 'Dic', entrega: '7MA ENTREGA 2024'},
+            ]
         }
     },
     mounted(){
@@ -90,24 +101,22 @@ export default {
             })
             .catch(err => console.error(err));
         },
-        checkEntrega(beneficiario, nombreEntrega, canasta){
-            let response = beneficiario.entregas.some(
+        tieneEntrega(beneficiario, nombreEntrega){
+            return beneficiario.entregas.some(
                 e => e.entrega === nombreEntrega
             );
-            if(response){
-                this.contador += canasta;
-            }
-            return response;
         },
-        getContador(){
-            console.log(this.sumaTotal);
-            let temp = this.contador;
-            this.sumaTotal = this.sumaTotal + temp;
-            this.contador = 0;
-            return temp;
-        },
-        resultado(){
-            return this.sumaTotal;
+        getSubTotal(beneficario){
+            return this.meses.reduce((total, mes) => {
+                return total + (this.tieneEntrega(beneficario, mes.entrega)? 1 : 0)
+            },0)
+        }
+    },
+    computed: {
+        totalGeneral(){
+            return this.items.reduce((sum, beneficiario) => {
+                return sum + this.getSubTotal(beneficiario);
+            },0)
         }
     }
 };
