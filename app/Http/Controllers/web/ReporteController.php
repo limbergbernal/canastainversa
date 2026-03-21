@@ -21,7 +21,7 @@ class ReporteController extends Controller
     //     $q->whereYear('fecha', now()->year);
     // }], 'monto')
     // ->get();
-        $barrios = Barrio::where('estado','HABILITADO')->get(['id','nombre']);
+        $barrios = Barrio::where('estado','HABILITADO')->orderBy('nombre','ASC')->get(['id','nombre']);
         $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
         // $entrega = Entrega::whereIn('entrega', $entregasSelecionadas)->where('barrio_id', 7)->distinct('ci')->orderBy('nombre_completo')->get();
         // dd($entrega);
