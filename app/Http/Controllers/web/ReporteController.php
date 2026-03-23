@@ -27,4 +27,8 @@ class ReporteController extends Controller
         // dd($entrega);
         return view("reportes.index", compact('barrios'));
     }
+
+    public function reporteCi(){
+        return view("reportes.reporteCi");
+    }
 }

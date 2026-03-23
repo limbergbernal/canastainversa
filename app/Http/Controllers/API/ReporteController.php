@@ -37,5 +37,13 @@ class ReporteController extends Controller
         // $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
         // dd($entrega);
         // return view("reportes.index", compact('entrega', 'barrios'));
+        }
+    public function getReporteCi(Request $request){
+        $ci = $request->input('ci');
+        $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
+        $beneficiario = Beneficiario::with(['entregas' => function ($q) use ($entregasSelecionadas){
+            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO','NO ENTREGADO']);
+        }])->where('ci', $ci)->first();
+        return response()->json($beneficiario);
     }
 }

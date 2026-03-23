@@ -1,7 +1,13 @@
 import { createApp } from 'vue';
-import $ from 'jquery';
+// import $ from 'jquery';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// import './bootstrap';
 
-import './bootstrap';
+// import PerfectScrollbar from 'perfect-scrollbar';
+// import 'perfect-scrollbar/css/perfect-scrollbar.css';
+
+// // hacerlo global para que custom.min.js lo vea
+// window.PerfectScrollbar = PerfectScrollbar;
 
 
 const components = import.meta.glob('./components/*.vue')
@@ -32,4 +38,4 @@ document.querySelectorAll('[data-vue]').forEach(async (el) => {
     }
 
 });
-window.$ = window.jQuery = $;
+// window.$ = window.jQuery = $;
