@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/reportes', [ReporteController::class, 'getReporteBeneficiarios']);
+Route::get('/reportes/ci/{ci}', [ReporteController::class, 'getReporteCi']);
