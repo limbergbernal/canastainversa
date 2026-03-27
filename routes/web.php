@@ -22,4 +22,5 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/barrios',[BarrioController::class, 'index'])->name('dashboard.barrios');
 Route::get('dashboard/reportes',[ReporteController::class, 'index'])->name('dashboard.reportes');
+Route::get('dashboard/reportes/noEntregados',[ReporteController::class, 'getReporteNoEntregado'])->name('dashboard.reporte.noentregado');
 Route::get('dashboard/reportes/ci',[ReporteController::class, 'reporteCi'])->name('dashboard.reportesCi');
