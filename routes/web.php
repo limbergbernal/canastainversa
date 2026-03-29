@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
+    Route::get('barrio', [BarrioController::class, 'index'])->name('barrios');
+});
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/barrios',[BarrioController::class, 'index'])->name('dashboard.barrios');
 Route::get('dashboard/reportes',[ReporteController::class, 'index'])->name('dashboard.reportes');
