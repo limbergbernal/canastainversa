@@ -45,4 +45,22 @@ class ReporteController extends Controller
         }])->where('ci', $ci)->first();
         return response()->json($beneficiario);
     }
+
+    public function getReporteDistrito(Request $request){
+        $distrito_id = $request->input('distrito_id');
+        $barriosNombres = Barrio::where('distrito_id', $distrito_id)->orderBy('nombre','ASC')->get(['id','nombre']);
+        $barrios = Barrio::where('distrito_id', $distrito_id)->get('id');
+        $entregasSelecionadas = ["1RA ENTREGA 2025","2DA ENTREGA 2025","3RA ENTREGA 2025"];
+
+        $ids_beneficiarios = Entrega::whereIn('entrega', $entregasSelecionadas)->whereIn('barrio_id', $barrios)->distinct('beneficiario_id')->get('beneficiario_id');
+        $beneficiarios = Beneficiario::with(['entregas' => function ($q) use ($entregasSelecionadas, $barrios){
+            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO','NO ENTREGADO'])->whereIn('barrio_id', $barrios);
+        }])
+        ->whereIn('id', $ids_beneficiarios->pluck('beneficiario_id'))
+        ->orderBy('nombre_completo')
+        ->get();
+
+        return response()->json(['barrios'=> $barriosNombres, 'beneficiarios' => $beneficiarios]);
+
+    }
 }

@@ -27,6 +27,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{ route('dashboard.barrios') }}">Barrios/Comunidades</a></li>
                         <li><a href="{{ route('dashboard.reportes') }}">Reporte </a></li>
+                        <li><a href="{{ route('dashboard.reporte.distrito') }}">Reporte Distrito</a></li>
                         <li><a href="index2.html">Reporte Cambios</a></li>
                                             </ul>
                 </li>

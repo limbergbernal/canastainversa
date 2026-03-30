@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use App\Models\Barrio;
 use App\Models\Beneficiario;
+use App\Models\Distrito;
 use App\Models\Entrega;
 use Illuminate\Http\Request;
 
@@ -45,5 +46,10 @@ class ReporteController extends Controller
 
     public function reporteCi(){
         return view("reportes.reporteCi");
+    }
+
+    public function getReporteDistrito(){
+        $distritos = Distrito::where('estado', 'HABILITADO')->orderBy('distrito','ASC')->get(['id','distrito']);
+        return view("reportes.reporteDistrito", compact('distritos'));
     }
 }
