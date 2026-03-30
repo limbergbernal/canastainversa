@@ -31,7 +31,7 @@ class EntregasImport implements ToModel
         // print_r($beneficiario);
         try{
             return new Entrega([
-                'ano' => 2024,
+                'ano' => 2025,
                 'entrega' => $this->entrega,
                 'nombre_completo' => $row[3]. ' ' . $row[4]. ' '. $row[5],
                 'ci' => $ci,
