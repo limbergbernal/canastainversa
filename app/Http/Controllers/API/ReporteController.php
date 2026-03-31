@@ -12,7 +12,8 @@ class ReporteController extends Controller
 {
     public function getReporteBeneficiarios(Request $request){
         $barrio_id = $request->barrio_id;
-        $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
+        // $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
+        $entregasSelecionadas = ["1RA ENTREGA 2025","2DA ENTREGA 2025","3RA ENTREGA 2025"];
         $entrega = Entrega::whereIn('entrega', $entregasSelecionadas)->where('barrio_id', $barrio_id)->distinct('beneficiario_id')->get('beneficiario_id');
         $beneficiarios = Beneficiario::with(['entregas' => function ($q) use ($entregasSelecionadas, $barrio_id){
             $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO'])->where('barrio_id', $barrio_id);
@@ -39,9 +40,10 @@ class ReporteController extends Controller
         // return view("reportes.index", compact('entrega', 'barrios'));
         }
     public function getReporteCi($ci){
-        $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
+        // $entregasSelecionadas = ["1RA ENTREGA 2024","2DA ENTREGA 2024","3RA ENTREGA 2024","4TA ENTREGA 2024","5TA ENTREGA 2024","6TA ENTREGA 2024","7MA ENTREGA 2024"];
+        $entregasSelecionadas = ["1RA ENTREGA 2025","2DA ENTREGA 2025","3RA ENTREGA 2025"];
         $beneficiario = Beneficiario::with(['entregas' => function ($q) use ($entregasSelecionadas){
-            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO','NO ENTREGADO'])->with('barrio');;
+            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO'])->with('barrio');;
         }])->where('ci', $ci)->first();
         return response()->json($beneficiario);
     }
@@ -54,7 +56,7 @@ class ReporteController extends Controller
 
         $ids_beneficiarios = Entrega::whereIn('entrega', $entregasSelecionadas)->whereIn('barrio_id', $barrios)->distinct('beneficiario_id')->get('beneficiario_id');
         $beneficiarios = Beneficiario::with(['entregas' => function ($q) use ($entregasSelecionadas, $barrios){
-            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO','NO ENTREGADO'])->whereIn('barrio_id', $barrios);
+            $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['ENTREGADO','RESAGADO'])->whereIn('barrio_id', $barrios);
         }])
         ->whereIn('id', $ids_beneficiarios->pluck('beneficiario_id'))
         ->orderBy('nombre_completo')

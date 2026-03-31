@@ -22,8 +22,8 @@ class EntregaSeeder extends Seeder
         // Excel::import(new EntregasImport('6TA ENTREGA 2024'), database_path('seeders/data/6ta_entrega_2024.xlsx'));
         // Excel::import(new EntregasImport('7MA ENTREGA 2024'), database_path('seeders/data/7ma_entrega_2024.xlsx'));
 
-        Excel::import(new EntregasImport('1RA ENTREGA 2025'), database_path('seeders/data/7ma_entrega_2024.xlsx'));
-        Excel::import(new EntregasImport('2DA ENTREGA 2025'), database_path('seeders/data/7ma_entrega_2024.xlsx'));
-        Excel::import(new EntregasImport('3RA ENTREGA 2025'), database_path('seeders/data/7ma_entrega_2024.xlsx'));
+        Excel::import(new EntregasImport('1RA ENTREGA 2025'), database_path('seeders/data/1RA_ENTREGA_2025.xlsx'));
+        Excel::import(new EntregasImport('2DA ENTREGA 2025'), database_path('seeders/data/2DA_ENTREGA_2025.xlsx'));
+        Excel::import(new EntregasImport('3RA ENTREGA 2025'), database_path('seeders/data/3RA_ENTREGA_2025.xlsx'));
     }
 }

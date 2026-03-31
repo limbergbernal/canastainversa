@@ -64,25 +64,41 @@ export default {
             items: [],
             contador: 0,
             sumaTotal:0,
+            // meses: [
+            //     { label: 'Ene', entrega: '1RA ENTREGA 2024'},
+            //     { label: 'Feb', entrega: '1RA ENTREGA 2024'},
+
+            //     { label: 'Mar', entrega: '2DA ENTREGA 2024'},
+            //     { label: 'Abr', entrega: '2DA ENTREGA 2024'},
+
+            //     { label: 'May', entrega: '3RA ENTREGA 2024'},
+
+            //     { label: 'Jun', entrega: '4TA ENTREGA 2024'},
+            //     { label: 'Jul', entrega: '4TA ENTREGA 2024'},
+
+            //     { label: 'Ago', entrega: '5TA ENTREGA 2024'},
+
+            //     { label: 'Sep', entrega: '6TA ENTREGA 2024'},
+            //     { label: 'Oct', entrega: '6TA ENTREGA 2024'},
+
+            //     { label: 'Nov', entrega: '7MA ENTREGA 2024'},
+            //     { label: 'Dic', entrega: '7MA ENTREGA 2024'},
+            // ]
             meses: [
-                { label: 'Ene', entrega: '1RA ENTREGA 2024'},
-                { label: 'Feb', entrega: '1RA ENTREGA 2024'},
+                { label: 'Ene', entrega: '1RA ENTREGA 2025'},
+                { label: 'Feb', entrega: '1RA ENTREGA 2025'},
+                { label: 'Mar', entrega: '1RA ENTREGA 2025'},
+                { label: 'Abr', entrega: '1RA ENTREGA 2025'},
 
-                { label: 'Mar', entrega: '2DA ENTREGA 2024'},
-                { label: 'Abr', entrega: '2DA ENTREGA 2024'},
+                { label: 'May', entrega: '2DA ENTREGA 2025'},
+                { label: 'Jun', entrega: '2DA ENTREGA 2025'},
+                { label: 'Jul', entrega: '2DA ENTREGA 2025'},
+                { label: 'Ago', entrega: '2DA ENTREGA 2025'},
 
-                { label: 'May', entrega: '3RA ENTREGA 2024'},
-
-                { label: 'Jun', entrega: '4TA ENTREGA 2024'},
-                { label: 'Jul', entrega: '4TA ENTREGA 2024'},
-
-                { label: 'Ago', entrega: '5TA ENTREGA 2024'},
-
-                { label: 'Sep', entrega: '6TA ENTREGA 2024'},
-                { label: 'Oct', entrega: '6TA ENTREGA 2024'},
-
-                { label: 'Nov', entrega: '7MA ENTREGA 2024'},
-                { label: 'Dic', entrega: '7MA ENTREGA 2024'},
+                { label: 'Sep', entrega: '3RA ENTREGA 2025'},
+                { label: 'Oct', entrega: '3RA ENTREGA 2025'},
+                { label: 'Nov', entrega: '3RA ENTREGA 2025'},
+                { label: 'Dic', entrega: '3RA ENTREGA 2025'},
             ]
         }
     },
