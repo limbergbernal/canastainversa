@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BarrioController;
 use App\Http\Controllers\API\ReporteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/reportes', [ReporteController::class, 'getReporteBeneficiarios']);
 Route::get('/reportes/distritos', [ReporteController::class, 'getReporteDistrito']);
 Route::get('/reportes/ci/{ci}', [ReporteController::class, 'getReporteCi']);
+Route::get('/barrio/data', [BarrioController::class, 'index'])->name('barrio.data');
