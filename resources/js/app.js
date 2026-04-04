@@ -11,7 +11,7 @@ import { createApp } from 'vue';
 // window.PerfectScrollbar = PerfectScrollbar;
 
 
-const components = import.meta.glob('./components/*.vue')
+const components = import.meta.glob('./components/**/*.vue')
 
 document.querySelectorAll('[data-vue]').forEach(async (el) => {
 

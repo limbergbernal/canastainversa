@@ -24,3 +24,4 @@ Route::get('/reportes', [ReporteController::class, 'getReporteBeneficiarios']);
 Route::get('/reportes/distritos', [ReporteController::class, 'getReporteDistrito']);
 Route::get('/reportes/ci/{ci}', [ReporteController::class, 'getReporteCi']);
 Route::get('/barrio/data', [BarrioController::class, 'index'])->name('barrio.data');
+Route::get('/barrio/{id}', [BarrioController::class, 'show'])->name('barrio.show');
