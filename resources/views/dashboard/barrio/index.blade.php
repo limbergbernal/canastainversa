@@ -23,6 +23,7 @@
                 </div>
             </div>
         </div>
+        <div data-vue="barrio/BarrioEditar"></div>
     </div>
 @endsection
 @section('script')
@@ -56,6 +57,17 @@
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
                 }
+            });
+            $(document).on('click', '.edit-btn', function(){
+
+                window.dispatchEvent(new CustomEvent('editar-barrio', {
+                    detail: {
+                        id: $(this).data('id')
+                    }
+                }));
+            });
+            $(document).on('click', '.delete-btn', function(){
+
             });
         })
     </script>

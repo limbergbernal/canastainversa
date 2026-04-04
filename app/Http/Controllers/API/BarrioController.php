@@ -21,7 +21,17 @@ class BarrioController extends Controller
                 return ($barrio->estado) ? '<span class="badge badge-success">Habilitado</span>': '<span class="badge badge-danger">Deshabilitado</span>';
             })
             ->addColumn('acciones', function($barrio){
-                return '<button class="btn btn-sm btn-primary">Editar</button>';
+                $botones = '';
+                // if(auth()->user()->role === 'admin'){
+                //     $botones .= '<button class="btn btn-sm btn-primary" data-id="'.$barrio->id.'"><span class="fa fa-edit"></span></button>';
+                // }
+                // if(auth()->user()->role === 'admin'){
+                //     $botones .= '<button class="btn btn-sm btn-danger" data-id="'.$barrio->id.'"><span class="fa fa-trash"></span></button>';
+                // }
+                $botones .= '<button class="btn btn-sm btn-primary mr-1 edit-btn" data-id="'.$barrio->id.'"><span class="fa fa-edit"></span></button>';
+                $botones .= '<button class="btn btn-sm btn-danger" data-id="'.$barrio->id.'"><span class="fa fa-trash"></span></button>';
+
+                return $botones;
             })
             ->rawColumns(['acciones','estado'])
             ->make(true);
