@@ -43,9 +43,10 @@
                 lengthMenu: [10, 25, 50, 100],
                 ordering: true,
                 columns: [
-                    { data: 'tipo', title: 'Tipo'},
-                    { data: 'nombre', title: 'Nombre' },
-                    { data: 'distrito', title: 'Distrito'},
+                    { data: 'tipo',name:'barrios.tipo', title: 'Tipo'},
+                    { data: 'nombre',name: 'barrios.nombre', title: 'Nombre' },
+                    { data: 'distrito',name: 'distritos.distrito', title: 'Distrito'},
+                    { data: 'estado',name: 'barrios.estado', title: 'Estado'},
                     {
                     data: 'acciones',
                     orderable: false,
@@ -53,7 +54,7 @@
                     }
                 ],
                 language: {
-                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
                 }
             });
         })
