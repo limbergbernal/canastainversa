@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div data-vue="barrio/BarrioEditar"></div>
+        <div data-vue="barrio/BarrioEditar2"></div>
     </div>
 @endsection
 @section('script')
