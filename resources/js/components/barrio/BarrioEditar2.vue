@@ -13,11 +13,29 @@
 <script setup>
 import Modal from "@/components/UI/Modal.vue";
 import { onMounted, onUnmounted, ref } from "vue";
+import axios from "axios";
 
 const showModal = ref(false);
 
-const openModal = () =>{
+const barrio = ref({
+    nombre: "",
+    distrito: "",
+    estado: "Activo"
+});
+
+const openModal = async(event) =>{
+    const id = event.detail.id;
     showModal.value = true;
+    await obtenerBarrio(id);
+}
+
+const obtenerBarrio = async(id) => {
+    try{
+        const response = await axios.get(`/api/barrios/${id}`);
+        barrio.value = response.data;
+    }catch(error){
+        console.error("Error al obtener barrio", error);
+    }
 }
 
 onMounted(() => {
