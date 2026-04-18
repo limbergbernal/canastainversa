@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // DistritoSeeder::class,
             // BarrioSeeder::class,
-            // BeneficiarioSeeder::class,
+            BeneficiarioSeeder::class,
             EntregaSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();

@@ -40,7 +40,7 @@ class ReporteController extends Controller
             $q->whereIn('entrega', $entregasSelecionadas)->whereIn('estado', ['NO ENTREGADO']);
         }])
         ->whereIn('id', $entrega->pluck('beneficiario_id'))
-        ->orderBy('nombre_completo')
+        ->orderBy('barrio_id','ASC')->orderBy('nombre_completo','ASC')
         ->get();
         return view("reportes.reportenoentregado",compact('beneficiarios'));
 

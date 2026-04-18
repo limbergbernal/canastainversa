@@ -13,18 +13,30 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
+                                <th>Estado</th>
                                 <th>Nombre</th>
                                 <th>Cedula</th>
-                                <th>Barrio</th>
                                 <th>Entregas</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($beneficiarios as $beneficiario )
                                 <tr>
+                                    <td>{{ $beneficiario->estado }}</td>
                                     <td>{{ $beneficiario->nombre_completo }}</td>
                                     <td>{{ $beneficiario->ci }}</td>
-                                    <td>{{ $beneficiario->barrio->nombre }}</td>
+                                    <td>
+                                        @if ($beneficiario->entregas->isEmpty())
+                                            No se han registrado entregas para este beneficiario.
+                                        @else
+
+                                                @foreach ($beneficiario->entregas as $entrega)
+                                                    {{$entrega->entrega}} - {{ $entrega->barrio->nombre }} - {{ $entrega->estado }}<br>
+                                                @endforeach
+
+                                        @endif
+
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
