@@ -38,14 +38,14 @@ class BarrioController extends Controller
         }
     }
     public function show(Request $request,$id){
-        if($request->ajax()){
-            $barrio = Barrio::find($id);
-            if($barrio){
-                return response()->json($barrio);
-            }
-            else{
-                return response()->json(['message' => 'Barrio no encontrado'], 404);
-            }
+
+        $barrio = Barrio::find($id);
+        if($barrio){
+            return response()->json($barrio);
+        }
+        else{
+            return response()->json(['message' => 'Barrio no encontrado'], 404);
         }
     }
+
 }

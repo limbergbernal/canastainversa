@@ -34,7 +34,7 @@
   </Teleport>
 </template>
 <script setup>
-import {computed ,onMounted, onUnmounted } from "vue";
+import {computed ,onMounted, onUnmounted, watch } from "vue";
 
 const props = defineProps({
   modelValue: {
@@ -62,13 +62,23 @@ const close = () => {
   emit("update:modelValue", false);
   emit("close");
 };
-onMounted(() => {
-  document.body.classList.add("modal-open");
-});
+// onMounted(() => {
+//   document.body.classList.add("modal-open");
+// });
 
-onUnmounted(() => {
-  document.body.classList.remove("modal-open");
-});
+// onUnmounted(() => {
+//   document.body.classList.remove("modal-open");
+// });
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if(newValue){
+      document.body.classList.add('modal-open')
+    }else{
+      document.body.classList.remove('modal-open')
+    }
+  }
+)
 </script>
 <style scope>
     .modal-enter-active,
