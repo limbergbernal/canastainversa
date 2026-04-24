@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\barrio\BarrioRequest;
 use App\Models\Barrio;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -46,6 +47,11 @@ class BarrioController extends Controller
         else{
             return response()->json(['message' => 'Barrio no encontrado'], 404);
         }
+    }
+
+    public function store(BarrioRequest $request){
+        $barrio = Barrio::create($request->all());
+        return response()->json($barrio, 200);
     }
 
 }

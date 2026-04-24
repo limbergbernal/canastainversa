@@ -25,3 +25,5 @@ Route::get('/reportes/distritos', [ReporteController::class, 'getReporteDistrito
 Route::get('/reportes/ci/{ci}', [ReporteController::class, 'getReporteCi']);
 Route::get('/barrio/data', [BarrioController::class, 'index'])->name('barrio.data');
 Route::get('/barrio/{id}', [BarrioController::class, 'show'])->name('barrio.show');
+Route::post('/barrio', [BarrioController::class, 'store'])->name('barrio.store');
+Route::put('/barrio/{id}', [BarrioController::class, 'update'])->name('barrio.update');
