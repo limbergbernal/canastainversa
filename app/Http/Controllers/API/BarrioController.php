@@ -54,4 +54,13 @@ class BarrioController extends Controller
         return response()->json($barrio, 200);
     }
 
+    public function update(BarrioRequest $request, $id){
+        $barrio = Barrio::find($id);
+        if($barrio){
+            $barrio->update($request->all());
+            return response()->json($barrio, 200);
+        }
+        return response()->json(['message' => 'Barrio no encontrado'], 404);
+    }
+
 }

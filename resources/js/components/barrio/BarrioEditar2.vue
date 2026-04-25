@@ -61,6 +61,7 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import axios from "axios";
 import { TIPO_BARRIO, DISTRITOS, ESTADOS } from "../../constants/options";
 import { useForm } from "../composables/useForm";
+import { notify } from '@/utils/alert';
 
 const showModal = ref(false);
 
@@ -72,7 +73,7 @@ const {form: barrio,errors, reset, setData, loading, submit} = useForm({
     estado: "Activo"
 });
 
-const isEditar = computed(() => !!barrio.id);
+const isEditar = computed(() => !!barrio.value.id);
 
 const openModal = async(event) =>{
     const id = event.detail.id;
@@ -94,15 +95,17 @@ const obtenerBarrio = async(id) => {
     }
 }
 const guardar = async() => {
+
     const url = isEditar.value
-                ? `/api/barrio/${barrio.id}`
+                ? `/api/barrio/${barrio.value.id}`
                 : "/api/barrio";
     const method = isEditar.value ? "put" : "post";
 
     const res = await submit(url, method);
     if(res){
-        reset();
         showModal.value = false;
+        notify.success(`Barrio ${isEditar.value ? 'actualizado' : 'creado'} exitosamente`);
+        reset();
         window.dispatchEvent(new CustomEvent("barrio-guardado", {detail: res}));
     }
 }
