@@ -9,6 +9,9 @@
                             <h4 class="card-title"><span class="lstick"></span>Barrios</h4>
                         </div>
                     </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" id="btnNuevo">Nuevo</button>
+                    </div>
                     <table id="mi-tabla" class="table">
                         <thead>
                             <tr>
@@ -66,9 +69,20 @@
                     }
                 }));
             });
+            $(document).on('click', '#btnNuevo', function(){
+                window.dispatchEvent(new CustomEvent('editar-barrio'));
+            });
             $(document).on('click', '.delete-btn', function(){
 
             });
+            window.addEventListener('barrio-guardado', function(){
+                $('#mi-tabla').DataTable().ajax.reload(null, false);
+            });
+
+            //  window.addEventListener('barrio-guardado', function(event){
+            //     let id = event.detail.id;
+            //     $('#mi-tabla').DataTable().ajax.reload(null, false);
+            // });
         })
     </script>
 @endsection

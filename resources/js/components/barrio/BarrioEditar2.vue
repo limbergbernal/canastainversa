@@ -67,16 +67,16 @@ const showModal = ref(false);
 
 const {form: barrio,errors, reset, setData, loading, submit} = useForm({
     id: null,
-    tipo: "Barrio",
+    tipo: "BARRIO",
     nombre: "",
     distrito_id: "",
-    estado: "Activo"
+    estado: "HABILITADO"
 });
 
 const isEditar = computed(() => !!barrio.value.id);
 
 const openModal = async(event) =>{
-    const id = event.detail.id;
+    const id = event.detail?.id ?? null;
     showModal.value = true;
     if(id){
         await obtenerBarrio(id);
