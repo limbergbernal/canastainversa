@@ -5,7 +5,7 @@
         </template>
         <form id="formBarrio" @submit.prevent="guardar">
         <div class="form-horizontal">
-            <div class="form-group">
+            <div class="form-group" :class="{'has-danger': errors.tipo}">
                 <label for="tipo" class="form-label">Tipo</label>
                 <select class="form-control" id="tipo" v-model="barrio.tipo">
                     <option value="" selected>Seleccione un Tipo</option>
@@ -17,14 +17,14 @@
                     {{ errors.tipo[0] }}
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" :class="{'has-danger': errors.nombre}">
                 <label class="form-label">Nombre</label>
                 <input type="text" class="form-control" v-model="barrio.nombre" placeholder="Nombre del Barrio/Comunidad">
                 <div v-if="errors.nombre" class="form-control-feedback">
                     {{ errors.nombre[0] }}
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" :class="{'has-danger': errors.distrito_id}">
                 <label for="distrito" class="form-label">Distrito</label>
 
                 <select class="form-control" id="distrito" v-model="barrio.distrito_id">
@@ -35,7 +35,7 @@
                     {{ errors.distrito_id[0] }}
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" :class="{'has-danger': errors.estado}">
                 <label for="estado" class="form-label">Estado</label>
                 <select name="estado" id="estado" class="form-control" v-model="barrio.estado">
                     <option value="">Seleccione un Estado</option>

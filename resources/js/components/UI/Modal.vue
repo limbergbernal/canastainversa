@@ -12,7 +12,7 @@
               <slot name="header">
                 <h5 class="modal-title">Modal</h5>
               </slot>
-              <button type="button" class="btn-close" @click="close"></button>
+              <button type="button" class="btn-close" @click="close"><i class="fa fa-close"></i></button>
             </div>
             <!-- BODY -->
             <div class="modal-body">

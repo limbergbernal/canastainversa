@@ -27,3 +27,7 @@ Route::get('/barrio/data', [BarrioController::class, 'index'])->name('barrio.dat
 Route::get('/barrio/{id}', [BarrioController::class, 'show'])->name('barrio.show');
 Route::post('/barrio', [BarrioController::class, 'store'])->name('barrio.store');
 Route::put('/barrio/{id}', [BarrioController::class, 'update'])->name('barrio.update');
+
+Route::group(['prefix' => 'distrito', 'name' => 'distrito.'], function(){
+    
+});
