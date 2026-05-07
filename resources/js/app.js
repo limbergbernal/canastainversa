@@ -9,6 +9,7 @@ import { createApp } from 'vue';
 
 // // hacerlo global para que custom.min.js lo vea
 // window.PerfectScrollbar = PerfectScrollbar;
+import './init/datatables';
 
 
 const components = import.meta.glob('./components/**/*.vue')

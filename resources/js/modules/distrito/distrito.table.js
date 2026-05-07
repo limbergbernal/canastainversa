@@ -1,19 +1,34 @@
-import { createDataTable } from "../../datatable/factory";
+// import { createDataTable } from "../../datatable/factory";
 
-export function initDistritoTable(){
-    return createDataTable({
-        el: '#distrito-table',
-        ajax: '{{ route("distrito.data") }}',
-        columns: [
-            { data: 'distrito', name: 'distrito.distrito', title: 'Distrito'},
-            { data: 'numero', name: 'distrito.numero', title: 'Numero'},
-            { data: 'Estado', name: 'distrito.estado', title: 'Estado'},
-            {
-                data: 'acciones',
-                orderable: false,
-                searchable: false,
-                title: 'Acciones'
-            }
-        ]
-    });
-}
+// export function initDistritoTable(){
+//     return createDataTable({
+//         el: '#distrito-table',
+//         ajax: '{{ route("distrito.data") }}',
+//         columns: [
+//             { data: 'distrito', name: 'distrito.distrito', title: 'Distrito'},
+//             { data: 'numero', name: 'distrito.numero', title: 'Numero'},
+//             { data: 'estado', name: 'distrito.estado', title: 'Estado'},
+//             {
+//                 data: 'acciones',
+//                 orderable: false,
+//                 searchable: false,
+//                 title: 'Acciones'
+//             }
+//         ]
+//     });
+// }
+
+export const distritoTableConfig = {
+    ajax: '{{ route("distrito.data") }}',
+    columns: [
+        { data: "distrito", name: "distrito.distrito", title: "Distrito" },
+        { data: "numero", name: "distrito.numero", title: "Numero" },
+        { data: "estado", name: "distrito.estado", title: "Estado" },
+        {
+            data: "acciones",
+            orderable: false,
+            searchable: false,
+            title: "Acciones",
+        },
+    ],
+};

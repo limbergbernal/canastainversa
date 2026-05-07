@@ -11,7 +11,7 @@
                 <div class="text-right">
                     <button class="btn btn-primary" id="btnNuevo">Nuevo</button>
                 </div>
-                <table id="mi-tabla" class="table">
+                <table class="datatable" data-table="distrito" class="table">
                     <thead>
                         <tr>
                            <th>Distrito</th>
@@ -28,11 +28,9 @@
 @section('script')
 @include('layouts.datatable')
 <script>
-        import { InitDataTableDefaults} from '../assets/js/datatable/config.js';
-        import { initDistritoTable } from '../assets/js/datatable/distrito.js';
+
         $(document).ready(function(){
-            initDataTableDefaults();
-            initDistritoTable();
+
         });
     </script>
 @endsection
