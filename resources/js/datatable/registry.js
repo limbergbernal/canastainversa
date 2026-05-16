@@ -1,5 +1,7 @@
+import { barrioTableConfig } from '../modules/barrios/barrio.table';
 import { distritoTableConfig} from '../modules/distrito/distrito.table';
 
 export const tableRegistry = {
-    distrito: distritoTableConfig
+    distrito: distritoTableConfig,
+    barrio: barrioTableConfig
 }

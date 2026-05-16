@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\BarrioController;
+use App\Http\Controllers\API\DistritoController;
 use App\Http\Controllers\API\ReporteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::get('/barrio/{id}', [BarrioController::class, 'show'])->name('barrio.show
 Route::post('/barrio', [BarrioController::class, 'store'])->name('barrio.store');
 Route::put('/barrio/{id}', [BarrioController::class, 'update'])->name('barrio.update');
 
-Route::group(['prefix' => 'distrito', 'name' => 'distrito.'], function(){
-    
+
+Route::group(['prefix' => 'distrito', 'as' => 'distrito.'], function(){
+    Route::get('/data', [DistritoController::class, 'index'])->name('data');
 });

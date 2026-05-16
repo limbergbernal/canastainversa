@@ -11,7 +11,7 @@
                 <div class="text-right">
                     <button class="btn btn-primary" id="btnNuevo">Nuevo</button>
                 </div>
-                <table class="datatable" data-table="distrito" class="table">
+                <table class="datatable table" data-table="distrito" data-url="{{ route('distrito.data') }}" id="datatable-distrito">
                     <thead>
                         <tr>
                            <th>Distrito</th>
@@ -23,14 +23,29 @@
                 </table>
             </div>
         </div>
+        <div data-vue="distrito/ModalDistrito"></div>
     </div>
 @endsection
 @section('script')
 @include('layouts.datatable')
 <script>
-
         $(document).ready(function(){
 
+            $(document).on('click', '.edit-btn', function(){
+                window.dispatchEvent(new CustomEvent('open-modal-distrito', {
+                    detail: {
+                        id: $(this).data('id')
+                    }
+                }))
+            });
+
+            $(document).on('click', '#btnNuevo', function(){
+                window.dispatchEvent(new CustomEvent('open-modal-distrito'));
+            });
+
+            window.addEventListener('refresh-distritos', function(){
+                $('#datatable-distrito').DataTable().ajax.reload(null, false);
+            })
         });
     </script>
 @endsection
