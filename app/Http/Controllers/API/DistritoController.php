@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\API;
 
+use App\DTO\DistritoData;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\barrio\BarrioRequest;
+use App\Http\Requests\distrito\DistritoRequest;
 use App\Models\Distrito;
+use App\Services\DistritoService;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class DistritoController extends Controller
 {
+    public function __construct(protected DistritoService $service)
+    {
+        throw new \Exception('Not implemented');
+    }
     public function index(Request $request){
         if($request->ajax()){
             $distrito = Distrito::query();
@@ -45,5 +53,32 @@ class DistritoController extends Controller
             return response()->json(['message' => 'Distrito no encontrado'], 404);
         }
     }
-    
+
+    public function store(DistritoRequest $request){
+        $dto = DistritoData::fromArray(
+            $request->validated()
+        );
+        $distrito = $this->service->store($dto);
+
+        return response()->json(['message' => 'Distrito creado exitosamente',
+        'data' => $distrito],201);
+    }
+
+    public function update(BarrioRequest $request, int $id){
+        $dto = DistritoData::fromArray(
+            $request->validated()
+        );
+        $distrito = $this->service->update($id, $dto);
+
+        return response()->json(['message' => 'Distrito actualizado exitosamente.',
+            'data' => $distrito
+        ]);
+    }
+    public function destroy(int $id){
+        $this->service->destroy($id);
+        return response()->json([
+            'message' => 'Distrito eliminado correctamente.'
+        ]);
+    }
+
 }
