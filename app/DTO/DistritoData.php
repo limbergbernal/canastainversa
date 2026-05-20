@@ -17,7 +17,7 @@ class DistritoData{
     }
     public function toArray(): array{
         return[
-            'nombre' => $this->distrito,
+            'distrito' => $this->distrito,
             'numero' => $this->numero,
             'estado' => $this->estado
         ];

@@ -32,4 +32,8 @@ Route::put('/barrio/{id}', [BarrioController::class, 'update'])->name('barrio.up
 
 Route::group(['prefix' => 'distrito', 'as' => 'distrito.'], function(){
     Route::get('/data', [DistritoController::class, 'index'])->name('data');
+    Route::get('/{id}', [DistritoController::class, 'show'])->name('show');
+    Route::post('/', [DistritoController::class, 'store'])->name('store');
+    Route::put('/{id}', [DistritoController::class, 'update'])->name('update');
+    Route::delete('/{id}', [DistritoController::class, 'destroy'])->name('delete');
 });

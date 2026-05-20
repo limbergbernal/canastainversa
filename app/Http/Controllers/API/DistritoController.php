@@ -15,11 +15,12 @@ class DistritoController extends Controller
 {
     public function __construct(protected DistritoService $service)
     {
-        throw new \Exception('Not implemented');
+
     }
     public function index(Request $request){
         if($request->ajax()){
             $distrito = Distrito::query();
+
             return DataTables::of($distrito)
             ->addColumn('distrito', function($distrito){
                 return 'Distrito ' . $distrito->numero ?? 'Sin Distrito';
@@ -55,6 +56,7 @@ class DistritoController extends Controller
     }
 
     public function store(DistritoRequest $request){
+
         $dto = DistritoData::fromArray(
             $request->validated()
         );
