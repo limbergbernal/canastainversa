@@ -85,7 +85,7 @@ const guardar = async() => {
     const res = await submit(url, method);
     if(res){
         showModal.value = false;
-        notify.success(`Distrito ${isEditar.value.id ? 'actualizado' : 'creado'} exitosamente`);
+        notify.success(`Distrito ${isEditar.value ? 'actualizado' : 'creado'} exitosamente`);
         reset();
         window.dispatchEvent(new CustomEvent('refresh-distritos', { detail: res}));
     }

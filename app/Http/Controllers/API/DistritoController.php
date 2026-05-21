@@ -66,7 +66,7 @@ class DistritoController extends Controller
         'data' => $distrito],201);
     }
 
-    public function update(BarrioRequest $request, int $id){
+    public function update(DistritoRequest $request, int $id){
         $dto = DistritoData::fromArray(
             $request->validated()
         );
